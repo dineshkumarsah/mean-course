@@ -1,4 +1,18 @@
-<textarea name="" id="" cols="30" rows="10"></textarea>
-<hr/>
-<button>Create</button>
-<p>Users post</p>
+<mat-card>
+    <form (submit)="addPost(postForm)" #postForm="ngForm">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Title" name="title" ngModel required #title="ngModel">
+            <mat-error *ngIf="!title.valid">
+                Title is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput ngModel name="content" placeholder="Post content" required #content="ngModel"></textarea>
+            <mat-error *ngIf="!content.valid">
+                Content is required
+            </mat-error>
+        </mat-form-field>
+        <button type="submit" color="accent" mat-raised-button>Create</button>
+    </form>
+
+</mat-card>
