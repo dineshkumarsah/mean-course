@@ -24,6 +24,19 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "node_modules/ag-grid-community/dist/styles/ag-grid.css",
+                "bundleName": "vendor-style"
+              },
+              {
+                "input": "node_modules/ag-grid-community/dist/styles/ag-theme-balham-dark.css",
+                "bundleName": "vendor-style"
+              },
+              {
+                "input": "node_modules/ag-grid-community/dist/styles/ag-theme-balham.css",
+                "bundleName": "vendor-style"
+              },
+             
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],

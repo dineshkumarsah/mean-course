@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import {PostService} from '../post.service';
-import {Post} from '../post.model'
+import { PostService } from '../post.service';
+import { Post } from '../post.model'
 
 @Component({
   selector: 'app-post-list',
@@ -18,9 +18,17 @@ posts: Post[]=[]
   constructor(private getPostService: PostService) { }
 
   ngOnInit(): void {
-    this.getPostService.getPost().subscribe((res)=>{
-     this.posts = res
+    debugger
+    this.getPostService.getPost();
+    this.getPostService.getpostListener().subscribe({
+      next: (res)=>{ 
+        this.posts = res
+      }
     })
+  }
+  deletePost(id: string){
+    debugger
+    this.getPostService.deletePost(id)
   }
 
 }

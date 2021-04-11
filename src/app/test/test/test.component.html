@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-title>
+        User Registration Form
+    </mat-card-title>
+    <form [formGroup]="userForm" (ngSubmit)="onUserSubmit()">
+        <mat-form-field>
+            <input matInput type="text" placeholder="User Name" formControlName="userName">
+            <mat-error
+                *ngIf="!userForm.get('userName')?.errors?.required && !userForm.get('userName')?.errors?.forbiddenName">
+                User Name is required field!
+            </mat-error>
+            <mat-error *ngIf="userForm.get('userName')?.errors?.forbiddenName">
+                forbidden error
+            </mat-error>
+
+            <mat-error *ngIf="!userForm.get('userName').valid && userForm.get('userName').touched">
+                User Name is required field!
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="text" placeholder="Enter Email" formControlName="email">
+        </mat-form-field>
+
+        <mat-label>Gender:</mat-label>&nbsp;
+        <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button value="Male">Male</mat-radio-button>&nbsp;
+            <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field class="example-chip-list">
+            <mat-label>Favorite Fruits</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                    (removed)="remove(fruit)">
+                    {{fruit}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input placeholder="New fruit..." #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                    {{fruit}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <button mat-raised-button color="warn">Submit</button>
+
+    </form>
+    <hr>
+    <button mat-raised-button color="primary" (click)="getSelectedRow()">GetSelectedRow</button>
+    <ag-grid-angular #agGrid class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs"
+        rowSelection="multiple">
+    </ag-grid-angular>
+</mat-card>

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostCreateCompoent } from './posts/post-create/post-create.component';
+
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,16 +12,32 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { PostListComponent } from './posts/post-list/post-list.component';
+
 import { MatExpansionModule } from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
+
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatIconModule} from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatListModule } from '@angular/material/list';
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateCompoent,
+   
     HeaderComponent,
-    PostListComponent
+  
+    MainNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +49,17 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule ,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    MatSidenavModule,
+    AgGridModule.withComponents([]),
+    LayoutModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
