@@ -50,6 +50,9 @@ export class PostService {
         }
       })
   }
+  getPostById(id: string){
+    return this.http.get<{_id: string, title: string, content: string}>("http://localhost:3000/api/posts/" + id)
+  }
   getpostListener() {
     return this.updatedPost.asObservable()
   }
@@ -64,5 +67,15 @@ export class PostService {
          }
       })
     })
+  }
+  updatePost(id: string, title: string, content: string){
+   const post: Post = {id: id, title: title, content: content}
+   this.http.put("http://localhost:3000/api/posts/" + id,post).subscribe((res)=>{
+     const upDatedPost = [...this.postUpdated]
+     const oldIndex = upDatedPost.findIndex(p=>p.id==id) 
+     upDatedPost[oldIndex] = post
+     this.postUpdated = upDatedPost
+     this.updatedPost.next([...this.postUpdated])
+   })
   }
 }

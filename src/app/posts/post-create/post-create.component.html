@@ -1,19 +1,18 @@
 <mat-card>
-    <form (submit)="addPost(postForm)" #postForm="ngForm">
+    <mat-card-title>{{postId? 'Edit ':'New '}} Post</mat-card-title>
+    <form (submit)="onSavePost(postForm)" #postForm="ngForm">
         <mat-form-field>
-            <input type="text" matInput placeholder="Title" name="title" ngModel required #title="ngModel">
+            <input type="text" matInput placeholder="Title" name="title" [ngModel]="post?.title" required #title="ngModel">
             <mat-error *ngIf="!title.valid">
                 Title is required
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <textarea matInput ngModel name="content" placeholder="Post content" required #content="ngModel"></textarea>
+            <textarea matInput [ngModel]="post?.content" name="content" placeholder="Post content" required #content="ngModel"></textarea>
             <mat-error *ngIf="!content.valid">
                 Content is required
             </mat-error>
         </mat-form-field>
-        <button type="submit" color="accent" mat-raised-button>Create</button>
+        <button type="submit" color="accent" mat-raised-button>{{postId? 'Update':'SAVE'}}</button>
     </form>
-    <app-post-list></app-post-list>
-
 </mat-card>

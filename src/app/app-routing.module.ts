@@ -4,15 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: "",
+    loadChildren: ()=>import('./posts/posts.module')
+    .then(m=>m.PostsModule)
+  },
+  {
     path: 'test',
     loadChildren: ()=>import('./test/test/test.module')
     .then(m=>m.TestModule)
   },
-  {
-    path: "mean-course",
-    loadChildren: ()=>import('./posts/posts.module')
-    .then(m=>m.PostsModule)
-  }
+
 ];
 
 @NgModule({

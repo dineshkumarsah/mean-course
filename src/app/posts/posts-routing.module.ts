@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PostCreateCompoent } from './post-create/post-create.component';
+import { PostListComponent } from './post-list/post-list.component';
 
 
 const routes: Routes = [
   {
     path: '',
+    component: PostListComponent
+  },
+  {
+    path: 'create-post',
+    component: PostCreateCompoent
+  },
+  {
+    path: "edit/:postId",
     component: PostCreateCompoent
   }
 ];
