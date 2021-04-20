@@ -14,13 +14,16 @@ import { MatIconModule} from '@angular/material/icon';
 import { PostCreateCompoent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { FormsModule} from '@angular/forms';
-import { ReactiveFormsModule} from '@angular/forms'
+import { ReactiveFormsModule} from '@angular/forms';
+import { PostInAggridComponent } from './post-in-aggrid/post-in-aggrid.component';
+import { AgGridTableModule } from '../core/ag-grid-table/ag-grid-table.module'
 
 
 @NgModule({
   declarations: [
     PostCreateCompoent,
-    PostListComponent
+    PostListComponent,
+    PostInAggridComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,8 @@ import { ReactiveFormsModule} from '@angular/forms'
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridTableModule
   
 
   ]

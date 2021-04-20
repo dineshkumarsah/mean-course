@@ -1,0 +1,9 @@
+:host{
+    padding: 10px;
+    margin: 10px auto;
+}
+ag-grid-angular{
+    width: 100%;
+    height: 450px;
+    padding: 10px 10px 10px 10px;
+}
