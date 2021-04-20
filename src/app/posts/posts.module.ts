@@ -16,7 +16,8 @@ import { PostListComponent } from './post-list/post-list.component';
 import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
 import { PostInAggridComponent } from './post-in-aggrid/post-in-aggrid.component';
-import { AgGridTableModule } from '../core/ag-grid-table/ag-grid-table.module'
+import { AgGridTableModule } from '../core/ag-grid-table/ag-grid-table.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AgGridTableModule } from '../core/ag-grid-table/ag-grid-table.module'
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridTableModule
+    AgGridTableModule,
+    MatProgressSpinnerModule
   
 
   ]

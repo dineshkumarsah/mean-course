@@ -14,7 +14,8 @@ import { Post } from '../post.model';
 export class PostCreateCompoent implements OnInit {
     mode: string = "create";
     postId: string
-    post: Post
+    post: Post;
+    isLoading: boolean= false
 
     constructor(
         private postService: PostService,
@@ -28,7 +29,9 @@ export class PostCreateCompoent implements OnInit {
                if(pramMap.has('postId')){
                    this.mode = "edit";
                    this.postId = pramMap.get('postId');
+                   this.isLoading =true
                    this.postService.getPostById(this.postId).subscribe((res)=>{
+                    this.isLoading =false
                      this.post = {
                          id: res._id,
                          title: res.title,

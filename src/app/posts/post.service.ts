@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { Post } from './post.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Router} from '@angular/router'
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class PostService {
   postUpdated: Post[] = []
   updatedPost = new Subject<Post[]>()
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   addPost(title: string, content: string) {
     const post = {
@@ -26,7 +27,7 @@ export class PostService {
       post.id = id
       this.postUpdated.push(post)
       this.updatedPost.next([...this.postUpdated])
-
+      this.router.navigate(['/']);
     })
 
   }
@@ -76,6 +77,7 @@ export class PostService {
      upDatedPost[oldIndex] = post
      this.postUpdated = upDatedPost
      this.updatedPost.next([...this.postUpdated])
+     this.router.navigate(['/']);
    })
   }
 }

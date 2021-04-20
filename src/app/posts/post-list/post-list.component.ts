@@ -13,16 +13,18 @@ export class PostListComponent implements OnInit {
 //   {title: 'Second post', content: "second post/'content"},
 //   {title: 'Third post', content: "Third post/'content"},
 // ]
+isLoading: boolean = false
 posts: Post[]=[]
 
   constructor(private getPostService: PostService) { }
 
   ngOnInit(): void {
-    debugger
+    this.isLoading = true
     this.getPostService.getPost();
     this.getPostService.getpostListener().subscribe({
       next: (res)=>{ 
-        this.posts = res
+        this.posts = res;
+        this.isLoading = false
       }
     })
   }
