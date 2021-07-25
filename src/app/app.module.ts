@@ -23,9 +23,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MainNavComponent } from './main-nav/main-nav.component';
+// import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './home/home.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
 
@@ -36,8 +38,10 @@ import { MatListModule } from '@angular/material/list';
     AppComponent,
    
     HeaderComponent,
+   
+    HomeComponent,
   
-    MainNavComponent,
+    // MainNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     AgGridModule.withComponents([]),
     LayoutModule,
-    MatListModule
+    MatListModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

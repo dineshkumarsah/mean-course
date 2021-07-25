@@ -1,0 +1,16 @@
+.logo {
+    width: 75px;
+    height: 61px;
+}
+
+.logo a img {
+    width: 100%;
+    height: 100%;
+}
+.nav-bg{
+    background: #e1296e !important;
+}
+a.nav-link{
+    color: white !important;
+    font-size: 20px;
+}

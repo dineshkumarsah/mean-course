@@ -1,0 +1,27 @@
+:host{
+    display: block;
+    margin-top: 200px;
+}
+.author {
+    padding: 1vmin;
+    letter-spacing: 4px;
+}
+
+.author-sub-title {
+    font-size: 5.5vmin;
+    font-weight: bold;
+    padding: 0.1em 0em;
+}
+
+.author-description {
+    padding: 1vmin 5vmin;
+}
+
+.buy-now-button {
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+img.book-img {
+    width: 90%;
+}

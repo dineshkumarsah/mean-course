@@ -29,7 +29,6 @@ posts: Post[]=[]
     })
   }
   deletePost(id: string){
-    debugger
     this.getPostService.deletePost(id)
   }
 

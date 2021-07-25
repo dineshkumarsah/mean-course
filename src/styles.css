@@ -2,9 +2,20 @@
 
 html, body {
      height: 100%; 
-     background: #373737;
     }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; }
+    :root {
+        --sanigle-font: "snigle",cursive;
+        --Rubik: "Rubik",cursive;
+        --Patua: "Patua",cursive;
+        --Lobster: "Lobster", cursive;
+        --light-black: 2e2crcaf;
+        --bggredient: linear-gradient(to bottom , #dd2476, #ff512f);
+        --light-grey: rgba(255, 255, 255, 0)
+    }
 .mat-toolbar {
   background: aqua;
 }
@@ -46,6 +57,41 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .ag-theme-balham .ag-ltr .ag-row-group-leaf-indent{
     margin-left: 0px  !important;
+}
+@media only screen and (max-width: 768px) {
+    .panel {
+        position: initial;
+       width: initial;
+       height: initial;
+    }
+    .cover {
+        background-position: -25rem -10rem;
+    }
+    .rect {
+        width: 9rem;
+        height: 8rem;
+    }
+    .rect h1 {
+        font-size: 3rem;
+        
+    }
+    .section-3 {
+        height: inherit;
+        padding: 10vmin !important;
+    }
+    .tean {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+    .section-4 .carousel-inner {
+        width: 24rem;
+    }
+}
+@media only screen and (max-width: 4225px) {
+    footer.row.col-md-2 {
+        margin-top: 8vmin;
+    }
 }
 
 
