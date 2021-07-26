@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { PostService } from '../post.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from '../post.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 
 @Component({
@@ -15,7 +15,9 @@ export class PostCreateCompoent implements OnInit {
     mode: string = "create";
     postId: string
     post: Post;
-    isLoading: boolean= false
+    isLoading: boolean= false;
+    form: FormGroup;
+    imagePreview: any;
 
     constructor(
         private postService: PostService,
@@ -24,6 +26,11 @@ export class PostCreateCompoent implements OnInit {
 
     }
     ngOnInit(): void {
+        this.form = new FormGroup({
+            'title': new FormControl( null, {validators: [Validators.required, Validators.minLength(3)]}),
+            'content': new FormControl(null, {validators: [Validators.required]}),
+            'image': new FormControl(null,{validators: [Validators.required]})
+        });
         this.route.paramMap.subscribe(
             (pramMap: ParamMap)=>{
                if(pramMap.has('postId')){
@@ -37,6 +44,10 @@ export class PostCreateCompoent implements OnInit {
                          title: res.title,
                          content: res.content
                      }
+                     this.form.setValue({
+                         title: this.post.title,
+                     content: this.post.content
+                     })
                    })
                }else{
                    this.mode = "create";
@@ -45,15 +56,32 @@ export class PostCreateCompoent implements OnInit {
             }
         );
      }
-    onSavePost(postForm: NgForm) {
-        if (postForm.form.invalid) {
+
+     onImagePicked(event: Event) {
+      const files  = (event.target as HTMLInputElement).files[0]
+      this.form.patchValue({
+          image: files
+      })
+      this.form.get('image').updateValueAndValidity();
+      console.log(files);
+      console.log(this.form);
+      const fileReader = new FileReader();
+      fileReader.onload = ()=>{
+          this.imagePreview = fileReader.result
+      };
+      fileReader.readAsDataURL(files)
+      
+     }
+
+    onSavePost() {
+        if (this.form.invalid) {
             return
         }
         if(this.mode==="create"){
-            this.postService.addPost(postForm.value.title, postForm.value.content)
+            this.postService.addPost(this.form.value.title, this.form.value.content)
         }else{
-            this.postService.updatePost(this.postId,postForm.value.title, postForm.value.content)
+            this.postService.updatePost(this.postId,this.form.value.title, this.form.value.content)
         }
-        postForm.resetForm(); 
+        this.form.reset();
     }
 }

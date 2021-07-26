@@ -13,7 +13,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule} from '@angular/material/icon';
 import { PostCreateCompoent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
-import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule} from '@angular/forms';
 import { PostInAggridComponent } from './post-in-aggrid/post-in-aggrid.component';
 import { AgGridTableModule } from '../core/ag-grid-table/ag-grid-table.module';
@@ -38,7 +37,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
     ReactiveFormsModule,
     AgGridTableModule,
     MatProgressSpinnerModule

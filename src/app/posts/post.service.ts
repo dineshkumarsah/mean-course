@@ -27,7 +27,7 @@ export class PostService {
       post.id = id
       this.postUpdated.push(post)
       this.updatedPost.next([...this.postUpdated])
-      this.router.navigate(['/']);
+      this.router.navigate(['/post']);
     })
 
   }
@@ -76,7 +76,7 @@ export class PostService {
      upDatedPost[oldIndex] = post
      this.postUpdated = upDatedPost
      this.updatedPost.next([...this.postUpdated])
-     this.router.navigate(['/']);
+     this.router.navigate(['/post']);
    })
   }
 }
