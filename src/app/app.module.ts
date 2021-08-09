@@ -28,6 +28,9 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+
 
 
 
@@ -40,6 +43,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     HeaderComponent,
    
     HomeComponent,
+   
+    SidebarComponent,
   
     // MainNavComponent,
   ],
@@ -64,7 +69,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     AgGridModule.withComponents([]),
     LayoutModule,
     MatListModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
