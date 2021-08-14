@@ -3,34 +3,8 @@
     <app-header></app-header>
   </div>
 </header>
-<section>
-  <div class="tap-top top-cls" [ngStyle]="{ display: show ? 'block' : 'none' }">
-    <button class="btn btn-default" (click)="tapToTop()"><span style="color: white;">Top</span>></button>
-  </div>
-</section>
-<section class="">
-  <div class="row">
-    <div class="col-md-2">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div class="col-md-5" style="padding: 100px;">
-      <carousel>
-        <slide>
-          <img src="assets/images/book12.jpg" alt="first slide" style="display: block; width: 100%;">
-        </slide>
-        <slide>
-          <img src="assets/images/cover.jpg" alt="second slide" style="display: block; width: 100%;">
-        </slide>
-        <slide>
-          <img src="assets/images/pray.jpg" alt="third slide" style="display: block; width: 100%;">
-        </slide>
-      </carousel>
-    </div>
-    <div class="col-md-5">
+<section class="background-image-settings centr-item">
       <router-outlet></router-outlet>
-    </div>
-  </div>
-
 </section>
 
 <main>
