@@ -11,12 +11,10 @@ import { Router } from '@angular/router'
 })
 export class PostService {
   postUpdated: Post[] = []
-  updatedPost = new Subject<Post[]>()
+  updatedPost = new Subject<{posts: Post[], postCount: number}>()
   constructor(private http: HttpClient, private router: Router) { }
 
   addPost(title: string, content: string, image: File) {
-    debugger
-
     const postData = new FormData();
     postData.append('title', title);
     postData.append('content', content);
@@ -24,35 +22,31 @@ export class PostService {
 
     this.http.post<{ message: string, post: Post }>('http://localhost:3000/api/posts', postData).
       subscribe((responseData) => {
-        const post: Post = {
-          id: responseData.post.id,
-          title: title,
-          content: content,
-          imagePath: responseData.post.imagePath
-        }
-        this.postUpdated.push(post)
-        this.updatedPost.next([...this.postUpdated])
+        
         this.router.navigate(['/post']);
       })
 
   }
-  getPost() {
-    this.http.get<{ message: string, posts: any }>('http://localhost:3000/api/posts').pipe(
+  getPost(pageSize: number, currentPage: number) {
+    let queryParams = `?pageSize=${pageSize}&page=${currentPage}`
+    this.http.get<{ message: string, posts: any, maxtPost: number }>('http://localhost:3000/api/posts' + queryParams).pipe(
       map((postData) => {
-        return postData.posts.map((post) => {
-          return {
-            title: post.title,
-            content: post.content,
-            id: post._id,
-            imagePath: post.imagePath
-          }
-        })
+        return {
+          post: postData.posts.map((post) => {
+            return {
+              title: post.title,
+              content: post.content,
+              id: post._id,
+              imagePath: post.imagePath
+            }
+          }), maxPosts: postData.maxtPost
+        }
       })
     ).
       subscribe({
-        next: (tranFormPost) => {
-          this.postUpdated = tranFormPost;
-          this.updatedPost.next(this.postUpdated)
+        next: (tranFormPostData) => {
+          this.postUpdated = tranFormPostData.post;
+          this.updatedPost.next({posts:[...this.postUpdated], postCount:tranFormPostData.maxPosts })
         }
       })
   }
@@ -64,15 +58,7 @@ export class PostService {
   }
 
   deletePost(postId: string) {
-    this.http.delete("http://localhost:3000/api/posts/" + postId).subscribe((res) => {
-      console.log('deleted');
-      this.postUpdated.forEach((ele) => {
-        if (ele.id == postId) {
-          this.postUpdated.splice(this.postUpdated.indexOf(ele), 1)
-          this.updatedPost.next([...this.postUpdated])
-        }
-      })
-    })
+    return this.http.delete("http://localhost:3000/api/posts/" + postId)
   }
   updatePost(id: string, title: string, content: string, image: File | string) {
     let postData: Post | FormData
@@ -91,17 +77,7 @@ export class PostService {
       }
     }
     this.http.put("http://localhost:3000/api/posts/" + id, postData).subscribe((res) => {
-      const upDatedPost = [...this.postUpdated]
-      const oldIndex = upDatedPost.findIndex(p => p.id == id)
-      const post: Post = {
-        id: id,
-        title: title,
-        content: content,
-        imagePath: ""
-      }
-      upDatedPost[oldIndex] = post
-      this.postUpdated = upDatedPost
-      this.updatedPost.next([...this.postUpdated])
+     
       this.router.navigate(['/post']);
     })
   }

@@ -350,4 +350,25 @@ div.tap-top {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.auther-section{
+    display: flex;
+    padding: 10px;
+    width: 80%;
+    margin: auto;
+}
+.auther-section div{
+    flex: 1;
+    background-color: white;
+    padding: 5px;
+}
+
+
+.img-auth img {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+@media only screen and (max-width: 768px) {
+    .auther-section {
+      flex-direction: column;
+    }
+  }
 

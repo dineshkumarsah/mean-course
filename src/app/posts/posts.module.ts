@@ -17,6 +17,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { PostInAggridComponent } from './post-in-aggrid/post-in-aggrid.component';
 import { AgGridTableModule } from '../core/ag-grid-table/ag-grid-table.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     ReactiveFormsModule,
     AgGridTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   
 
   ]

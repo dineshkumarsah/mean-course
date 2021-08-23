@@ -30,10 +30,10 @@ export class PostInAggridComponent implements OnInit {
   ngOnInit(): void {
   }
   getPosts(){
-    this.getPostService.getPost();
+    //this.getPostService.getPost();
     this.getPostService.getpostListener().subscribe({
       next: (res)=>{ 
-        this.posts = res
+        // this.posts = res
         this.grid_api.setRowData(this.posts)
       }
     })

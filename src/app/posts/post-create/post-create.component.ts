@@ -77,6 +77,7 @@ export class PostCreateCompoent implements OnInit {
     }
 
     onSavePost() {
+        debugger
         if (this.form.invalid) {
             return
         }
